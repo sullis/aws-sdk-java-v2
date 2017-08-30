@@ -16,6 +16,7 @@
 package software.amazon.awssdk.core.regions.providers;
 
 import software.amazon.awssdk.annotations.ReviewBeforeRelease;
+import software.amazon.awssdk.annotations.SdkInternalApi;
 import software.amazon.awssdk.core.SdkClientException;
 import software.amazon.awssdk.core.regions.Region;
 
@@ -23,12 +24,12 @@ import software.amazon.awssdk.core.regions.Region;
  * Interface for providing AWS region information. Implementations are free to use any strategy for
  * providing region information.
  */
+@SdkInternalApi
 public abstract class AwsRegionProvider {
-
     /**
      * @return Region name to use or null if region information is not available.
      */
-    @ReviewBeforeRelease("Should this be Optional and have the same contract as credential providers?")
+    @ReviewBeforeRelease("Should this throw exceptions so that its contract matches that of the credential providers?")
     public abstract Region getRegion() throws SdkClientException;
 
 }
