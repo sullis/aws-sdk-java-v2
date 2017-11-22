@@ -13,36 +13,34 @@
  * permissions and limitations under the License.
  */
 
-package software.amazon.awssdk.core;
+package software.amazon.awssdk.core.exception;
+
+import java.io.InputStream;
+import software.amazon.awssdk.annotations.SdkPublicApi;
 
 /**
- * SDK operation aborted exception.
+ * Extension of {@link SdkClientException} for exceptions resulting
+ * from a failure to reset an {@link InputStream}.
+ *
+ * This exception is not meant to be retried.
  */
-public class AbortedException extends SdkClientException {
-    private static final long serialVersionUID = 1L;
+@SdkPublicApi
+public class ResetException extends SdkClientException {
 
-    public AbortedException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public AbortedException(Throwable cause) {
-        super("", cause);
-    }
-
-    public AbortedException(String message) {
+    public ResetException(String message) {
         super(message);
     }
 
-    public AbortedException() {
-        super("");
+    public ResetException(String message, Throwable t) {
+        super(message, t);
     }
 
     /**
      * {@inheritDoc}
-     * An aborted exception is not intended to be retried.
+     * A stream reset exception cannot be retried.
      */
     @Override
-    public boolean isRetryable() {
+    public boolean retryable() {
         return false;
     }
 }

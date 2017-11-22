@@ -13,7 +13,7 @@
 
 package software.amazon.awssdk.services.cloudformation.waiters;
 
-import software.amazon.awssdk.core.AmazonServiceException;
+import software.amazon.awssdk.core.exception.SdkServiceException;
 import software.amazon.awssdk.annotations.SdkInternalApi;
 import software.amazon.awssdk.core.waiters.WaiterAcceptor;
 import software.amazon.awssdk.core.waiters.WaiterState;
@@ -33,7 +33,7 @@ import io.burt.jmespath.jackson.JacksonRuntime;
 @Generated("software.amazon.awssdk:aws-java-sdk-code-generator")
 class StackCreateComplete {
 
-    static class IsCREATE_COMPLETEMatcher extends WaiterAcceptor<DescribeStacksResponse, AmazonServiceException> {
+    static class IsCREATE_COMPLETEMatcher extends WaiterAcceptor<DescribeStacksResponse, SdkServiceException> {
         private static final JsonNode EXPECTED_RESULT;
 
         static {
@@ -72,7 +72,7 @@ class StackCreateComplete {
         }
     }
 
-    static class IsCREATE_FAILEDMatcher extends WaiterAcceptor<DescribeStacksResponse, AmazonServiceException> {
+    static class IsCREATE_FAILEDMatcher extends WaiterAcceptor<DescribeStacksResponse, SdkServiceException> {
         private static final JsonNode EXPECTED_RESULT;
 
         static {
@@ -111,7 +111,7 @@ class StackCreateComplete {
         }
     }
 
-    static class IsDELETE_COMPLETEMatcher extends WaiterAcceptor<DescribeStacksResponse, AmazonServiceException> {
+    static class IsDELETE_COMPLETEMatcher extends WaiterAcceptor<DescribeStacksResponse, SdkServiceException> {
         private static final JsonNode EXPECTED_RESULT;
 
         static {
@@ -150,7 +150,7 @@ class StackCreateComplete {
         }
     }
 
-    static class IsDELETE_FAILEDMatcher extends WaiterAcceptor<DescribeStacksResponse, AmazonServiceException> {
+    static class IsDELETE_FAILEDMatcher extends WaiterAcceptor<DescribeStacksResponse, SdkServiceException> {
         private static final JsonNode EXPECTED_RESULT;
 
         static {
@@ -189,7 +189,7 @@ class StackCreateComplete {
         }
     }
 
-    static class IsROLLBACK_FAILEDMatcher extends WaiterAcceptor<DescribeStacksResponse, AmazonServiceException> {
+    static class IsROLLBACK_FAILEDMatcher extends WaiterAcceptor<DescribeStacksResponse, SdkServiceException> {
         private static final JsonNode EXPECTED_RESULT;
 
         static {
@@ -228,7 +228,7 @@ class StackCreateComplete {
         }
     }
 
-    static class IsROLLBACK_COMPLETEMatcher extends WaiterAcceptor<DescribeStacksResponse, AmazonServiceException> {
+    static class IsROLLBACK_COMPLETEMatcher extends WaiterAcceptor<DescribeStacksResponse, SdkServiceException> {
         private static final JsonNode EXPECTED_RESULT;
 
         static {
@@ -267,7 +267,7 @@ class StackCreateComplete {
         }
     }
 
-    static class IsValidationErrorMatcher extends WaiterAcceptor<DescribeStacksResponse, AmazonServiceException> {
+    static class IsValidationErrorMatcher extends WaiterAcceptor<DescribeStacksResponse, SdkServiceException> {
         /**
          * Takes the response exception and determines whether this exception matches the expected exception, by
          * comparing the respective error codes.
@@ -277,8 +277,8 @@ class StackCreateComplete {
          * @return True if it matches, False otherwise
          */
         @Override
-        public boolean matches(AmazonServiceException e) {
-            return "ValidationError".equals(e.getErrorCode());
+        public boolean matches(SdkServiceException e) {
+            return "ValidationError".equals(e.errorCode());
         }
 
         /**

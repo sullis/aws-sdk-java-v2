@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
-import software.amazon.awssdk.core.AmazonServiceException;
+import software.amazon.awssdk.core.exception.SdkServiceException;
 import software.amazon.awssdk.core.auth.AwsCredentials;
 import software.amazon.awssdk.core.auth.StaticCredentialsProvider;
 import software.amazon.awssdk.services.simpledb.model.ListDomainsRequest;
@@ -33,7 +33,7 @@ import software.amazon.awssdk.services.simpledb.model.ListDomainsRequest;
 public class AuthenticationErrorsIntegrationTest extends IntegrationTestBase {
 
     /**
-     * Tests that using an invalid access key and secret key throw an AmazonServiceException with
+     * Tests that using an invalid access key and secret key throw an SdkServiceException with
      * the InvalidClientTokenId error code.
      */
     @Test
@@ -45,16 +45,16 @@ public class AuthenticationErrorsIntegrationTest extends IntegrationTestBase {
         try {
             client.listDomains(ListDomainsRequest.builder().build());
             fail("Expected exception not thrown");
-        } catch (AmazonServiceException e) {
-            assertEquals("InvalidClientTokenId", e.getErrorCode());
+        } catch (SdkServiceException e) {
+            assertEquals("InvalidClientTokenId", e.errorCode());
             assertTrue(e.getMessage().length() > 10);
-            assertTrue(e.getRequestId().length() > 10);
+            assertTrue(e.requestId().length() > 10);
         }
     }
 
     /**
      * Tests that using a valid access key with an invalid secret key throw an
-     * AmazonServiceException with the SignatureDoesNotMatch error code.
+     * SdkServiceException with the SignatureDoesNotMatch error code.
      */
     @Test
     public void testSignatureDoesNotMatch() {
@@ -65,10 +65,10 @@ public class AuthenticationErrorsIntegrationTest extends IntegrationTestBase {
         try {
             client.listDomains(ListDomainsRequest.builder().build());
             fail("Expected exception not thrown");
-        } catch (AmazonServiceException e) {
-            assertEquals("SignatureDoesNotMatch", e.getErrorCode());
+        } catch (SdkServiceException e) {
+            assertEquals("SignatureDoesNotMatch", e.errorCode());
             assertTrue(e.getMessage().length() > 10);
-            assertTrue(e.getRequestId().length() > 10);
+            assertTrue(e.requestId().length() > 10);
         }
     }
 

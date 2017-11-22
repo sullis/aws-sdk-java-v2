@@ -54,7 +54,7 @@ public class DomainMetadataIntegrationTest extends IntegrationTestBase {
             // assertNotNull(e.boxUsage());
             // assertTrue(e.boxUsage().floatValue() > 0);
 
-            assertEquals(400, e.getStatusCode());
+            assertEquals(400, e.statusCode());
         }
     }
 
@@ -76,7 +76,7 @@ public class DomainMetadataIntegrationTest extends IntegrationTestBase {
             // assertNotNull(e.boxUsage());
             // assertTrue(e.boxUsage().floatValue() > 0);
 
-            assertEquals(400, e.getStatusCode());
+            assertEquals(400, e.statusCode());
         }
     }
 

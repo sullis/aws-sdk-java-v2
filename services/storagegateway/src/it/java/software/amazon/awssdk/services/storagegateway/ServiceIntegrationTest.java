@@ -21,7 +21,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import software.amazon.awssdk.core.AmazonServiceException;
+import software.amazon.awssdk.core.exception.SdkServiceException;
 import software.amazon.awssdk.core.regions.Region;
 import software.amazon.awssdk.services.storagegateway.model.DeleteGatewayRequest;
 import software.amazon.awssdk.services.storagegateway.model.InvalidGatewayRequestException;
@@ -55,8 +55,8 @@ public class ServiceIntegrationTest extends AwsTestBase {
         sg.deleteGateway(DeleteGatewayRequest.builder().gatewayARN("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").build());
     }
 
-    @Test(expected = AmazonServiceException.class)
-    public void deleteGateway_NullArn_ThrowsAmazonServiceException() {
+    @Test(expected = SdkServiceException.class)
+    public void deleteGateway_NullArn_ThrowsSdkServiceException() {
         sg.deleteGateway(DeleteGatewayRequest.builder().build());
 
     }

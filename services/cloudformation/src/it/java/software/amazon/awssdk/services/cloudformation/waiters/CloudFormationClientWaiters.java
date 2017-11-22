@@ -17,7 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javax.annotation.Generated;
 import software.amazon.awssdk.annotations.SdkInternalApi;
-import software.amazon.awssdk.core.AmazonServiceException;
+import software.amazon.awssdk.core.exception.SdkServiceException;
 import software.amazon.awssdk.core.waiters.FixedDelayStrategy;
 import software.amazon.awssdk.core.waiters.MaxAttemptsRetryStrategy;
 import software.amazon.awssdk.core.waiters.PollingStrategy;
@@ -55,7 +55,7 @@ public class CloudFormationClientWaiters {
      */
     public Waiter<DescribeStacksRequest> stackCreateComplete() {
 
-        return new WaiterBuilder<DescribeStacksRequest, DescribeStacksResponse, AmazonServiceException>()
+        return new WaiterBuilder<DescribeStacksRequest, DescribeStacksResponse, SdkServiceException>()
                 .withSdkFunction(new DescribeStacksFunction(client))
                 .withAcceptors(new StackCreateComplete.IsCREATE_COMPLETEMatcher(),
                         new StackCreateComplete.IsCREATE_FAILEDMatcher(), new StackCreateComplete.IsDELETE_COMPLETEMatcher(),
@@ -72,7 +72,7 @@ public class CloudFormationClientWaiters {
      */
     public Waiter<DescribeStacksRequest> stackUpdateComplete() {
 
-        return new WaiterBuilder<DescribeStacksRequest, DescribeStacksResponse, AmazonServiceException>()
+        return new WaiterBuilder<DescribeStacksRequest, DescribeStacksResponse, SdkServiceException>()
                 .withSdkFunction(new DescribeStacksFunction(client))
                 .withAcceptors(new StackUpdateComplete.IsUPDATE_COMPLETEMatcher(),
                         new StackUpdateComplete.IsUPDATE_FAILEDMatcher(),

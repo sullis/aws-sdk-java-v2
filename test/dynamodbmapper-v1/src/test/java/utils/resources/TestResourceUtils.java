@@ -15,7 +15,7 @@
 
 package utils.resources;
 
-import software.amazon.awssdk.core.AmazonClientException;
+import software.amazon.awssdk.core.exception.SdkClientException;
 import software.amazon.awssdk.utils.Logger;
 import utils.resources.RequiredResources.ResourceCreationPolicy;
 import utils.resources.TestResource.ResourceStatus;
@@ -68,6 +68,6 @@ public class TestResourceUtils {
             Thread.sleep(1000 * 10);
         }
 
-        throw new AmazonClientException("Resource never escaped the transient state.");
+        throw new SdkClientException("Resource never escaped the transient state.");
     }
 }

@@ -267,7 +267,7 @@ public class SimpleDBIntegrationTest extends IntegrationTestBase {
             sdb.putAttributes(request);
             fail("Expected an AttributeDoesNotExist error code, but didn't received one");
         } catch (AttributeDoesNotExistException e) {
-            assertEquals("AttributeDoesNotExist", e.getErrorCode());
+            assertEquals("AttributeDoesNotExist", e.errorCode());
         }
     }
 
@@ -465,7 +465,7 @@ public class SimpleDBIntegrationTest extends IntegrationTestBase {
             sdb.deleteAttributes(request);
             fail("Expected an AttributeDoesNotExist error code, but didn't received one");
         } catch (AttributeDoesNotExistException e) {
-            assertEquals("AttributeDoesNotExist", e.getErrorCode());
+            assertEquals("AttributeDoesNotExist", e.errorCode());
         }
     }
 
