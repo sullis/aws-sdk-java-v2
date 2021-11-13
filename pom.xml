@@ -113,7 +113,7 @@
         <org.eclipse.text.version>3.5.101</org.eclipse.text.version>
         <rxjava.version>2.2.21</rxjava.version>
         <commons-codec.verion>1.10</commons-codec.verion>
-        <jmh.version>1.29</jmh.version>
+        <jmh.version>1.33</jmh.version>
         <awscrt.version>0.15.8</awscrt.version>
 
         <!--Test dependencies -->
